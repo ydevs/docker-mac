@@ -1,0 +1,16 @@
+version: '2'
+services:
+  php:
+    build: ./docker/php-fpm
+    expose:
+      - "9000"
+    volumes:
+      - ./html:/var/www/html/:delegated
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - "80:80"
+    links:
+      - php
+    volumes_from:
+      - php

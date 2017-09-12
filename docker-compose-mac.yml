@@ -1,0 +1,20 @@
+version: '2'
+services:
+  php:
+    build: ./docker/php-fpm
+    expose:
+      - "9000"
+    volumes:
+      - html-sync:/var/www/html/:nocopy
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - "80:80"
+    links:
+      - php
+    volumes_from:
+      - php
+
+volumes:
+  html-sync:
+    external: true
