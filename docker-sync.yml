@@ -4,4 +4,4 @@ options:
 syncs:
   html-sync:
     src: './html/'
-    sync_userid: 82
+    sync_userid: 1000
